@@ -1,4 +1,4 @@
-## Game of Life
+## Data Visualization Projects 
 
 A project for [FreeCodeCampus challenges](https://www.freecodecamp.org/challenges/visualize-data-with-a-bar-chart).
 
