@@ -1,31 +1,35 @@
 import React from 'react';
 import '../styles/App.css';
 import BarChart from './BarChart';
+import GDP from '../data/GDP-data.json';
 
 const App = () => {
   const barProps = {
-    data: [[1,5], [2,10], [3,1], [4,3]],
+    data: GDP.data,
     width: 1000,
     height: 500,
-    tooltip: false,
     barWidth: 30,
     xAxis: {
       type: 'date',
       title: 'Year',
-      start: '1945-01-00',
-      step:  '5-00-00'
+      step:  5
     },
     yAxis: {
-     type: 'number',
-     title: 'Gross Domestic Product, USA',
-     start: 0,
-     step: 2000 
-   }
+      number: 10,
+      title: 'Gross Domestic Product, USA'
+    },
+    margin: {
+      left: 75,
+      right: 20,
+      top: 20,
+      bottom:30
+    }
   };
+  // console.log('data:', GDP.data);
   return (
     <div className='App'>
-    <h2>Gross Domestic Product</h2>
-    <BarChart {...barProps} />
+      <h2>Gross Domestic Product</h2>
+      <BarChart {...barProps} />
   </div>
   );
 };

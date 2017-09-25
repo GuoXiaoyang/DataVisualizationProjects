@@ -1,128 +1,161 @@
 import React from 'react';
-import { compose, defaultProps, withStateHandlers } from 'recompose';
 import PropTypes from 'prop-types';
-import Bars from './Bars';
-import XAxis from './XAxis';
-import YAxis from './YAxis';
-import TransitionTooltip from './TransitionTooltip';
+import { compose, defaultProps} from 'recompose';
+import * as d3 from 'd3';
 
+class BarChart extends React.Component {
+  constructor(props){
+    super(props);
 
-
-let BarChart = (props) => {
-  console.log('props:',props);
-  const validData = (data) => (Object.prototype.toString.call(data) === '[object Array]' && data.length > 0 && data[0].length > 0);
-  const { data, width, height, padding, tooltip, tooltipShow, barWidth, barColor, xAxis, yAxis, pos } = props;
-  // valid data
-  if(!validData(data)) {
-    return null;
+    this.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    this.formatCurrency = d3.format('$.2f');
+    this.createBarChart = this.createBarChart.bind(this);
   }
-  const showTooltip = (pos) => {
-    if(!tooltip) return;
-    props.setPos(pos);
-    props.show();
-  };
-  const xData = data.map(d => d[0]);
-  const yData = data.map(d => d[1]);
-  const xType = xAxis.type || 'number';
-  const yType = yAxis.type || 'number';
-  const barStart = {
-    x: padding.left,
-    y: padding.top
-  };
-  const chartWidth = width - padding.left - padding.right;
-  const chartHeight = height - padding.top - padding.top;
-  return (
-  <div className="bar-chart">
-    <svg className="bar-chart-svg" width={width} height={height}>
-      <g className="class">
-        <XAxis data={xData} type={xType} width={chartWidth} axisProps={xAxis}/>
-        <YAxis data={yData} type={yType} height={chartHeight} axisProps={yAxis}/>
-        <Bars xData={xData} yData={yData} startX={barStart.x} startY={barStart.y} width={chartWidth} height={chartHeight} barWidth={barWidth} color={barColor} showTooltip={(pos) => showTooltip(pos)}/>
-      </g>
-    </svg>
-    {/* whether to render tooltip */}
-    <TransitionTooltip pos={pos}/>
+
+  componentDidMount() {
+    this.createBarChart();
+  }
+
+  componentDidUpdate() {
+    this.createBarChart();
+  }
+  isValidData(data) {
+    return (Object.prototype.toString.call(data) === '[object Array]' && data.length > 0 && data[0].length > 0);
+  }
+  createBarChart() {
+    const { data, width, height, margin, xAxis, yAxis } = this.props;
+    let barWidth = this.props.barWidth;
+    const chartWidth = width - margin.left - margin.right;
+    const chartHeight = height - margin.top - margin.bottom;
+    if(barWidth * data.length >= width) {
+      barWidth = width/(data.length);
+    }
+    const minX = data[0][0], maxX = data[data.length-1][0];
+    // construct ranges and axis
+    const xRange = d3.scaleTime()
+      .domain([new Date(minX), new Date(maxX)])
+      .range([0, chartWidth]);
+    const xAx = d3.axisBottom(xRange).ticks(d3.timeYear.every(xAxis.step));
+
+    const yRange = d3.scaleLinear()
+      .domain([0, d3.max(data, d => d[1])])
+      .range([chartHeight, 0]);
+    const num = yAxis.number;
+    const yAx = d3.axisLeft(yRange).ticks(num);
     
-  </div>
-  );
-};
+    const chart = d3.select(this.chart)
+      .attr('width', width)
+      .attr('height', height)
+      .append('g')
+      .attr('transform', `translate(${margin.left}, ${margin.top})`);
+
+    chart.append('g')
+      .attr('class', 'x axis')
+      .attr('transform', `translate(0, ${chartHeight})`)
+      .call(xAx);
+
+    chart.append('g')
+      .attr('class', 'y axis')
+      .call(yAx)
+      .append('text')
+      .attr('transform', `rotate(-90)`)
+      .attr('y', 6)
+      .attr('dy', '0.8em')
+      .style('text-anchor', 'end')
+      .text(yAxis.title || '');
+
+    // draw bars and bind mouse event
+    // ${d3.format('$.2f')(dollars)}
+    const tooltip = d3.select(this.barChart)
+      .append('div')
+      .attr('class', 'tooltip')
+      .style('opacity', 0);
+    const component = this;
+    chart.selectAll('.bar')
+      .data(data)
+      .enter().append('rect')
+      .attr('class', 'bar')
+      .attr('x', d => xRange(new Date(d[0])))
+      .attr('y', d => yRange(d[1]))
+      .attr('height', d => chartHeight - yRange(d[1]))
+      .attr('width', barWidth)
+      .on('mouseover', function(d) {
+        const rect = d3.select(this);
+        rect.attr('class', 'mouseover');
+        const currentDateTime = new Date(d[0]);
+        const year = currentDateTime.getFullYear();
+        const month = currentDateTime.getMonth();
+        const dollars = d[1];
+        tooltip.transition()
+          .duration(200)
+          .style('opacity', 0.9);
+        tooltip.html(`<span class='amount'>${component.formatCurrency(dollars)} Billion </span><br><span class='year'>${year}-${component.months[month]}</span>`)
+          .style('left', (d3.event.pageX + 5) + 'px')
+          .style('top', (d3.event.pageY - 50) + 'px');
+      })
+      .on('mouseout', function() {
+        const rect = d3.select(this);
+        rect.attr('class', 'mouseoff');
+        tooltip.transition()
+          .duration(500)
+          .style('opacity', 0);
+      });
+  }
+  
+  render() {
+    // const { data } = this.props;
+    // if(!this.isValidData(data)) return null;
+
+    return (
+      <div className="bar-chart" ref={node => this.barChart = node}>
+        <svg className="chart" ref={node => this.chart = node} >
+
+        </svg>
+      </div>
+    );
+  }
+}
+
+
 BarChart.propTypes = {
   data: PropTypes.array.isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
-  padding: PropTypes.shape({
+  margin: PropTypes.shape({
     top: PropTypes.number.isRequired,
     right: PropTypes.number.isRequired,
     left: PropTypes.number.isRequired,
     bottom: PropTypes.number.isRequired,
   }).isRequired,
-  tooltip: PropTypes.bool.isRequired,
   barWidth: PropTypes.number.isRequired,
-  barColor: PropTypes.string.isRequired,
   xAxis: PropTypes.shape({
-    type: PropTypes.string.isRequired,
-    title: PropTypes.string,
-    start:  PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number
-    ]),
-    step:  PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number
-    ])
-  }),
-  yAxis: PropTypes.shape({
-    type: PropTypes.string.isRequired,
-    title: PropTypes.string,
-    start:  PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ]),
-    step: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ])
-  }),
-  tooltipShow: PropTypes.bool,
-  pos: PropTypes.shape({
-    left: PropTypes.number.isRequired,
-    top: PropTypes.number.isRequired,
-  }),
-  setPos: PropTypes.func,
-  setShow: PropTypes.func
+    title: PropTypes.string.isRequired,
+    step: PropTypes.number.isRequired,
+  })
 };
 
 const defaultBarProps = {
   width: 1000,
   height: 500,
-  padding: {
+  margin: {
     top: 10,
     right: 20,
     bottom: 30,
     left: 50,
   },
-  tooltip: true,
   barWidth: 20,
-  barColor: '#4581b4',
   xAxis: {
-    type: 'number',
+    title: '',
+    step: 1,
   },
   yAxis: {
-    type: 'number',
-  },
+    title: '',
+    number: 10,
+  }
 };
 
-const stateHandlers = withStateHandlers(
-  ({ initialPos = {left: 0, top: 0},  tooltipShow = false }) => ({
-    pos: initialPos,
-    tooltipShow: tooltipShow,
-  }),
-  {
-    setPos: ({ pos }) => (offset) => ({pos: {left: pos.left + offset.left, top: pos.top + offset.top}}),
-    setShow: () => () => ({tooltipShow: true}),
-  }
-);
-const enhance = compose(stateHandlers, defaultProps(defaultBarProps));
+
+const enhance = compose(defaultProps(defaultBarProps));
 BarChart = enhance(BarChart);
 
 export default BarChart;
