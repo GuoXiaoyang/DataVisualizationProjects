@@ -1,37 +1,34 @@
 import React from 'react';
-import '../styles/App.css';
-import BarChart from './BarChart';
-import GDP from '../data/GDP-data.json';
+import BarChartExample from './BarChart/BarChartExample';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
-const App = () => {
-  const barProps = {
-    data: GDP.data,
-    width: 1000,
-    height: 500,
-    barWidth: 30,
-    xAxis: {
-      type: 'date',
-      title: 'Year',
-      step:  5
-    },
-    yAxis: {
-      number: 10,
-      title: 'Gross Domestic Product, USA'
-    },
-    margin: {
-      left: 75,
-      right: 20,
-      top: 20,
-      bottom:30
-    }
-  };
-  // console.log('data:', GDP.data);
-  return (
-    <div className='App'>
-      <h2>Gross Domestic Product</h2>
-      <BarChart {...barProps} />
+const App = () => (
+  <div className="App">
+    <h2><Link to="/">Visualization Projects</Link></h2>
+    <ul>
+      <li><Link to="/BarChart">BarChart</Link></li>
+    </ul>
+
   </div>
+);
+
+const RouterApp =() => {
+
+  return (
+    <Router>
+      <div>
+        <Route path="/" component={App}>
+        </Route>
+        <Route path="/BarChart" component={BarChartExample}>
+        </Route>     
+      </div>     
+    </Router>
   );
 };
 
-export default App;
+
+export default RouterApp;
