@@ -19,7 +19,7 @@ const App = () => (
 const RouterApp =() => {
 
   return (
-    <Router>
+    <Router basename="/DataVisualizationProjects">
       <div>
         <Route path="/" component={App}>
         </Route>

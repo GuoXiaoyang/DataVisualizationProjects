@@ -1,8 +1,24 @@
 ## Data Visualization Projects 
 
-A project for [FreeCodeCampus challenges](https://www.freecodecamp.org/challenges/visualize-data-with-a-bar-chart).
+Projects for FreeCodeCampus challenges
+* [Bar Chart](https://www.freecodecamp.org/challenges/visualize-data-with-a-bar-chart).
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-[Demo](https://guoxiaoyang.github.io/game-of-life/)
+* [Home](https://guoxiaoyang.github.io/DataVisualizationProjects/)
+![Bar Chart Example](./images/BarChartExample.gif)
 
+
+* [Bar Chart Demo](https://guoxiaoyang.github.io/DataVisualizationProjects/BarChart)
+
+## build
+```
+
+```
+
+## development
+```
+
+```
