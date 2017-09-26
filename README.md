@@ -17,7 +17,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ![Scatter Example](./images/ScatterExample.gif)
 
-* [Heat Map Demo]()
+* [Heat Map Demo](https://guoxiaoyang.github.io/DataVisualizationProjects/HeatMap)
 
 ![Heat Map Demo](./images/HeatMapExample.gif)
 ## build
