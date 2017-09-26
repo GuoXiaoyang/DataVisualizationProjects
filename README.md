@@ -3,7 +3,7 @@
 Projects for FreeCodeCampus challenges
 * [Bar Chart](https://www.freecodecamp.org/challenges/visualize-data-with-a-bar-chart).
 * [Scatterplot](https://www.freecodecamp.org/challenges/visualize-data-with-a-scatterplot-graph)
-
+* [Heat Map](https://www.freecodecamp.org/challenges/visualize-data-with-a-heat-map)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
@@ -17,6 +17,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ![Scatter Example](./images/ScatterExample.gif)
 
+* [Heat Map Demo]()
+
+![Heat Map Demo](./images/HeatMapExample.gif)
 ## build
 ```
 npm run build
