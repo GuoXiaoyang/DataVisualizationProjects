@@ -4,13 +4,13 @@ import HeatMap from './HeatMap';
 
 const HeatMapExample = () => {
   const props = {
-    data: CyclistData,
-    size: [1000, 600],
-    margin: {left:50,right:150,top:50,bottom:50}
+    data: TempData,
+    size: [1000, 700],
+    margin: {left:100,right:50,top:160,bottom:100}
   };
   return (
     <div className="heatmap-example">
-      <Scatter {...props}/>
+      <HeatMap {...props}/>
     </div>
   );
 };

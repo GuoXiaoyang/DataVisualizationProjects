@@ -1,0 +1,19 @@
+.heat-map {
+  font-family: sans-serif;
+  width: 1000px;
+  margin: 0 auto; 
+  background-color: white;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.32), 0 3px 12px 0 rgba(0, 0, 0, 0.24);
+}
+.y-axis {
+  font-size: 12px;
+}
+.heat-map .rect {
+  cursor: pointer;
+}
+
+.heat-map .tooltip{
+  width: auto;
+  text-align: center;
+  background: #757575;
+}
