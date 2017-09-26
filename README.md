@@ -15,7 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 * [Scatter Demo](https://guoxiaoyang.github.io/DataVisualizationProjects/ScatterPlot)
 
-![Scatter Example](./ScatterExample.gif)
+![Scatter Example](./images/ScatterExample.gif)
 
 ## build
 ```
