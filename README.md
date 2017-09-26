@@ -20,8 +20,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## build
 ```
 npm run build
+npm run deploy // push to the gh-pages
 ```
-Then open http://localhost:5000
+If you want to serve the build in the local, you should put the build files in `build/VisualizationProjects/` except the `index.html`.
+
 
 ## development
 ```
