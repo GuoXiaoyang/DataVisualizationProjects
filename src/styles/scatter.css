@@ -1,0 +1,26 @@
+.scatter-plot {
+  font-size: 16px;
+  margin: 10px auto;
+  width: 1000px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.32), 0 3px 12px 0 rgba(0, 0, 0, 0.24);
+}
+
+.scatter-plot .dot-text {
+  font-size: 12px;
+}
+.scatter-plot circle {
+  stroke: rgb(204, 204, 204);
+  stroke-width: 1px;
+  cursor: pointer;
+}
+
+.scatter-plot circle:hover {
+  stroke: black;
+}
+.scatter-plot .tooltip {
+  font-size: 12px;
+  background: #757575;
+}
+.scatter-label {
+  font-size: 12px;
+}

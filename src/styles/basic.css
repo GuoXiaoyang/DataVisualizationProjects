@@ -1,0 +1,75 @@
+body {
+  background-color: #ddd;
+  background-repeat: repeat;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAACgCAMAAACsXRuGAAAADFBMVEWIiIjd3d3y8vLm5uZzdc63AAAAbklEQVR42u3ZIQ4AIAwDwI39/8/wAlTFxFUgm5ALmFZV51Iv52Vyx/7CzhdONr3/ylCgQIECBQoUKFCgQIECBQoUKFCgQIECBcrmccGe4qX4vqBAgQIFChQoUKBAgQIFChQoUKBAgQIFij3lX3gBXBBzc8FaGvIAAAAASUVORK5CYII=)
+}
+
+.App {
+  margin: 10px auto;
+  width: 1000px;
+}
+.App h2 a {
+  display: block;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.4em;
+  transition: width 0.3s ease-in;
+}
+.App ul {
+  height: 30px;
+  padding: 10px;
+  background: rgba(122, 122, 122, 0.72);
+  border-radius: 2px;
+}
+.App ul li {
+  float: left;
+  list-style: none;
+  padding-right: 10px;
+
+}
+.App ul li a {
+  color: #201F1F;
+  text-decoration: none;
+  line-height: 30px;
+}
+.App ul li a:hover {
+  color: #D8D8D8;
+}
+/* .App h2 a:hover {
+  border-bottom: 2px solid #D83E3E;
+  text-decoration: underline;
+} */
+
+
+svg {
+  background-color: #fff;
+  opacity: .8;
+}
+
+.axis text {
+  fill: #000;
+  font: 15px sans-serif;
+}
+
+.axis path,
+.axis line {  
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.tooltip {
+  margin: 0 auto;
+  font-family: sans-serif;  
+  position: absolute;
+  text-align: left;
+  width: 200px;
+  line-height: 1.2;
+  padding: 3px 5px 3px 5px;
+  color: #000000;
+  font-size: 1.2em;
+  border-radius: 5px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+  background-color: lightsteelblue;
+}

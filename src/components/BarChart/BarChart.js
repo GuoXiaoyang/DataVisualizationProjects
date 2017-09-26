@@ -13,10 +13,14 @@ class BarChart extends React.Component {
   }
 
   componentDidMount() {
+    console.log('did mount!');
+    d3.select(this.barChart).selectAll('*').remove();
     this.createBarChart();
   }
-
+  
   componentDidUpdate() {
+    console.log('did update!');
+    d3.select(this.barChart).selectAll('*').remove();
     this.createBarChart();
   }
   isValidData(data) {
@@ -43,7 +47,8 @@ class BarChart extends React.Component {
     const num = yAxis.number;
     const yAx = d3.axisLeft(yRange).ticks(num);
     
-    const chart = d3.select(this.chart)
+    const chart = d3.select(this.barChart)
+      .append('svg')
       .attr('width', width)
       .attr('height', height)
       .append('g')
@@ -63,6 +68,14 @@ class BarChart extends React.Component {
       .attr('dy', '0.8em')
       .style('text-anchor', 'end')
       .text(yAxis.title || '');
+
+      // add title
+      chart.append('text')
+        .attr('id', 'bar-chart-title')
+        .attr('x', (chartWidth/2))
+        .attr('y', 20-(margin.top / 2))
+        .attr('text-anchor', 'middle')
+        .text('Gross Domestic Product');
 
     // draw bars and bind mouse event
     // ${d3.format('$.2f')(dollars)}
@@ -100,6 +113,7 @@ class BarChart extends React.Component {
           .duration(500)
           .style('opacity', 0);
       });
+
   }
   
   render() {
@@ -108,9 +122,7 @@ class BarChart extends React.Component {
 
     return (
       <div className="bar-chart" ref={node => this.barChart = node}>
-        <svg className="chart" ref={node => this.chart = node} >
 
-        </svg>
       </div>
     );
   }

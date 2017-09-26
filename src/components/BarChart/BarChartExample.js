@@ -1,5 +1,4 @@
 import React from 'react';
-import './BarChart.css';
 import BarChart from './BarChart';
 import GDP from './data/GDP-data.json';
 
@@ -21,14 +20,13 @@ const BarChartExample = () => {
     margin: {
       left: 75,
       right: 20,
-      top: 20,
+      top: 40,
       bottom:30
     }
   };
   // console.log('data:', GDP.data);
   return (
     <div className='bar-chart-example'>
-      <h2>Gross Domestic Product</h2>
       <BarChart {...barProps} />
   </div>
   );
