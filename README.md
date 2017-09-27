@@ -4,6 +4,9 @@ Projects for FreeCodeCampus challenges
 * [Bar Chart](https://www.freecodecamp.org/challenges/visualize-data-with-a-bar-chart).
 * [Scatterplot](https://www.freecodecamp.org/challenges/visualize-data-with-a-scatterplot-graph)
 * [Heat Map](https://www.freecodecamp.org/challenges/visualize-data-with-a-heat-map)
+* [Directed Force Graph](https://www.freecodecamp.org/challenges/show-national-contiguity-with-a-force-directed-graph)
+* [Geolocation Map](https://www.freecodecamp.org/challenges/map-data-across-the-globe)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
@@ -20,6 +23,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * [Heat Map Demo](https://guoxiaoyang.github.io/DataVisualizationProjects/HeatMap)
 
 ![Heat Map Demo](./images/HeatMapExample.gif)
+
+* [Directed Force Graph Demo](https://guoxiaoyang.github.io/DataVisualizationProjects/ForceDirectedGraph)
+
+![Directed Force Graph](./images/ForceDirectedExample.gif)
 ## build
 ```
 npm run build

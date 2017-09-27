@@ -2,23 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as d3 from 'd3';
 
-class Scatter extends React.Component {
+class GeolocationMap extends React.Component {
   constructor(props) {
     super(props);
-    this.createScatter = this.createScatter.bind(this);
+    this.createGeolocationMap = this.createGeolocationMap.bind(this);
   }
 
   componentDidMount() {
-    d3.select(this.scatter).selectAll('*').remove();
-    this.createScatter();
+    d3.select(this.GeolocationMap).selectAll('*').remove();
+    this.createGeolocationMap();
   }
   
   componentDidUpdate() {
-    d3.select(this.scatter).selectAll('*').remove();
-    this.createScatter();
+    d3.select(this.GeolocationMap).selectAll('*').remove();
+    this.createGeolocationMap();
   }
 
-  createScatter() {
+  createGeolocationMap() {
     const { data, size, margin} = this.props;
     const width = size[0] - margin.left - margin.right;
     const height = size[1] -margin.top - margin.bottom;
@@ -40,9 +40,9 @@ class Scatter extends React.Component {
     });
     x.domain([60 * 3.5, 0]);
     y.domain([d3.max(data, d => d.Place)+1, 1]);
-    // draw scatter
-    // add scatter
-    const svg = d3.select(this.scatter)
+    // draw GeolocationMap
+    // add GeolocationMap
+    const svg = d3.select(this.geolocationMap)
       .append('svg')
       .attr('width', size[0])
       .attr('height', size[1])
@@ -87,9 +87,9 @@ class Scatter extends React.Component {
       .attr('y', (d, i) => 30 * i + 20)
       .text(d => d);
 
-    // add scatters and mouse event
+    // add GeolocationMaps and mouse event
     // Add event
-    const tooltip = d3.select(this.scatter)
+    const tooltip = d3.select(this.geolocationMap)
       .append('div')
       .attr('class', 'tooltip')
       .style('opacity', 0);
@@ -147,24 +147,24 @@ class Scatter extends React.Component {
     };
     const labels = ['No doping allegations', 'Riders with doping allegations'];
     appendCircle(width - 150, height / 2, 5, 'black');
-    appendText(width - 135, height / 2 + 5, labels[0], 'scatter-label');
+    appendText(width - 135, height / 2 + 5, labels[0], 'GeolocationMap-label');
     appendCircle(width - 150, (height / 2) + 30, 5, 'red');
-    appendText(width - 135, (height / 2) + 35, labels[1], 'scatter-label');
+    appendText(width - 135, (height / 2) + 35, labels[1], 'GeolocationMap-label');
   }
 
   render() {
     return (
-      <div className="scatter-plot" ref={node => this.scatter = node}>
+      <div className="geolocation-map" ref={node => this.geolocationMap = node}>
 
       </div>
     );
   }
 }
 
-Scatter.propTypes = {
+GeolocationMap.propTypes = {
   data: PropTypes.array.isRequired,
   size: PropTypes.array.isRequired,
   margin: PropTypes.object.isRequired,
 };
 
-export default Scatter;
+export default GeolocationMap;

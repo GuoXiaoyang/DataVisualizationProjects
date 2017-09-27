@@ -1,0 +1,18 @@
+.geolocation-map {
+  position: relative;
+  width: 1000px;
+  margin: 0 auto; 
+  background-color: white;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.32), 0 3px 12px 0 rgba(0, 0, 0, 0.24);
+
+}
+
+
+
+.geolocation-map .tooltip {
+  width: auto;
+  /* z-index: 10; */
+  text-align: center;
+  background: #757575;
+  /* user-select: none; */
+}

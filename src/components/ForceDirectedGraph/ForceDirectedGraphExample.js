@@ -1,15 +1,15 @@
 import React from 'react';
-import CyclistData from './data/cyclist-data.json';
+import CountriesData from './data/countries.json';
 import ForceDirectedGraph from './ForceDirectedGraph';
 
 const ForceDirectedGraphExample = () => {
   const props = {
-    data: CyclistData,
-    size: [1000, 600],
-    margin: {left:50,right:150,top:50,bottom:50}
+    data: CountriesData,
+    size: [1000, 800],
+    margin: {left:20,right:20,top:20,bottom:20}
   };
   return (
-    <div className="scatter-example">
+    <div className="force-directed-example">
       <ForceDirectedGraph {...props}/>
     </div>
   );
