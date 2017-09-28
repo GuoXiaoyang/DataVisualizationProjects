@@ -10,7 +10,8 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.13",
     "react-transition-group": "^2.2.0",
-    "recompose": "^0.25.0"
+    "recompose": "^0.25.0",
+    "topojson-client": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -3,7 +3,7 @@ import BarChartExample from './BarChart/BarChartExample';
 import ScatterExample from './ScatterPlot/ScatterExample';
 import HeartMapExample from './HeatMap/HeatMapExample';
 import ForceDirectedGraphExample from './ForceDirectedGraph/ForceDirectedGraphExample';
-import GeoLocationMapExample from './ForceDirectedGraph/GeoLocationMapExample';
+import GeoLocationExample from './GeolocationMap/GeoLocationExample';
 import '../styles/basic.css';
 import '../styles/barChart.css';
 import '../styles/scatter.css';
@@ -28,7 +28,6 @@ const App = () => (
       <li><Link to="/HeatMap">HeatMap</Link></li>
       <li><Link to="/ForceDirectedGraph">ForceDirectedGraph</Link></li>
       <li><Link to="/GeolocationMap">GeolocationMap</Link></li>
-      GeolocationMap
     </ul>
 
   </div>
@@ -49,7 +48,7 @@ const RouterApp =() => {
         </Route>         
         <Route path="/ForceDirectedGraph" component={ForceDirectedGraphExample}>
         </Route> 
-        <Route path="/GeolocationMap" component={GeoLocationMapExample}>
+        <Route path="/GeolocationMap" component={GeoLocationExample}>
         </Route> 
         
       </div>     

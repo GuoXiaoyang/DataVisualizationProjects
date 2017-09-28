@@ -1,4 +1,4 @@
-.geolocation-map {
+.force-directed {
   position: relative;
   width: 1000px;
   margin: 0 auto; 
@@ -7,12 +7,24 @@
 
 }
 
+.force-directed .links line {
+  stroke: #aaa;
+}
+.force-directed .flag-box {
+  position: absolute;
+  left: 0;
+  top: 0; 
+}
 
+.force-directed .flag {
+  position: absolute;
 
-.geolocation-map .tooltip {
+}
+
+.force-directed .tooltip {
   width: auto;
-  /* z-index: 10; */
+  z-index: 10;
   text-align: center;
   background: #757575;
-  /* user-select: none; */
+  user-select: none;
 }

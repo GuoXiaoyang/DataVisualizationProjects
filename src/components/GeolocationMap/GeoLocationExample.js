@@ -1,19 +1,19 @@
 import React from 'react';
 import MapData from './data/meteorite-strike-data.json';
-import GeoLocationMap from './GeoLocationMap';
+import GeolocationMap from './GeoLocation';
 
-const GeolocationMapExample = () => {
+const GeolocationExample = () => {
   const props = {
-    data: CyclistData,
-    size: [1000, 600],
-    margin: {left:50,right:150,top:50,bottom:50}
+    data: MapData,
+    size: [1000, 980],
+    margin: {left:0, right:0, top:0, bottom:0}
   };
   return (
     <div className="geolocation-map-example">
       <GeolocationMap {...props}/>
-    </div>
+    </div> 
   );
 };
 
-export default GeolocationMapExample;
+export default GeolocationExample;
 
