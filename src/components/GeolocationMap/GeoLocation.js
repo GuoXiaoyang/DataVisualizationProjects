@@ -150,7 +150,7 @@ class GeolocationMap extends React.Component {
 }
 
 GeolocationMap.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.object.isRequired,
   size: PropTypes.array.isRequired,
   margin: PropTypes.object.isRequired,
 };
