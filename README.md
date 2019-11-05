@@ -48,6 +48,6 @@ Then open http://localhost:3000
 
 
 ## TODO
-[] 更新 README
-[] 更新不安全依赖
-[] 修复构建 html 中资源路径问题
+- [ ] 更新 README
+- [ ] 更新不安全依赖
+- [ ] 修复构建 html 中资源路径问题
