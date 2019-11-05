@@ -1,5 +1,5 @@
 {
-  "name": "data_visualization_projects",
+  "name": "data-visualization-projects",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +21,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://guoxiaoyang.github.io/DataVisualizationProjects/",
+  "homepage": "https://github.com/GXYDemoProjects/data-visualization-projects/",
   "devDependencies": {
     "why-did-you-update": "0.0.8"
   }
