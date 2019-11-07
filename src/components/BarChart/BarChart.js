@@ -79,6 +79,7 @@ class BarChart extends React.Component {
 
     // draw bars and bind mouse event
     // ${d3.format('$.2f')(dollars)}
+    console.log('======', d3.select(this.barChart));
     const tooltip = d3.select(this.barChart)
       .append('div')
       .attr('class', 'tooltip')
